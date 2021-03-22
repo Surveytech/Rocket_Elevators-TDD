@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Rocket-Elevator-Foundation
-=======
 # Rocket Elevators Information System <img src="app/assets/images/favicon.png" align="right" alt="Rocket Elevators logo by Maxime Auger" width="100" height="">
 
 # Week 7
@@ -178,4 +175,3 @@ read me created by jean-francois taillefer
 
 
 
->>>>>>> ca09f48044803dd9ef69bf715e71f8a606e21fa4
