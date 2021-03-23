@@ -1,0 +1,56 @@
+<section class="pb-0" id="interventions">
+<div class="container-fluid text-center pl-80 pr-80">
+<p id="notice"><%= notice %></p>
+    <div class="col-md-12 pt-30">
+      <h1>Interventions</h1>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Author</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Building</th>
+            <th scope="col">Battery</th>
+            <th scope="col">Column</th>
+            <th scope="col">Elevator</th>
+            <th scope="col-2">Intervention start</th>
+            <th scope="col-2">Intervention end</th>
+            <th scope="col">Result</th>
+            <th scope="col">Report</th>
+            <th scope="col">Status</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @interventions.each do |intervention| %>
+            <tr scope="row">  
+              <td><%= intervention.author_id %></td>
+              <td><%= intervention.employee_id %></td>
+              <td><%= intervention.building_id %></td>
+              <td><%= intervention.battery_id %></td>
+              <td><%= intervention.column_id %></td>
+              <td><%= intervention.elevator_id %></td>
+              <td><%= intervention.interv_start %></td>
+              <td><%= intervention.interv_end %></td>
+              <td><%= intervention.result %></td>
+              <td><%= intervention.report %></td>
+              <td><%= intervention.status %></td>
+              <td><%= link_to 'Show', intervention %></td>
+              <td><%= link_to 'Edit', edit_intervention_path(intervention) %></td>
+              <td><%= link_to 'Destroy', intervention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div> 
+  <br>
+<div class="container-fluid pt-50 pb-80">
+  <div class="row text-center">
+      <div class="col">
+          <%= link_to 'New Intervention', new_intervention_path %>
+      </div>
+  </div>
+</div>

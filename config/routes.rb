@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+  resources :interventions
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
   get 'pages/residential'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   #get '/maps'       => 'maps#dashboard'
   post '/leads'       => 'leads#create'
   post '/quotes'      => 'quotes#create'
-
+  get '/interventions' => 'interventions#new'
   get 'buildinglocalisation' => 'buildinglocalisation#building'
   get '/speak'       => 'speak#speech'
   # get '/speak', to: 'speak#text_to_speech', as: 'button'
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
   end
 
   Rails.application.routes.draw do
+  resources :interventions
     resources :quotes, only: [:new, :create]
   end
 end

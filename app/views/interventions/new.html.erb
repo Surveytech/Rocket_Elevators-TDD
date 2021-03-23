@@ -1,0 +1,14 @@
+<div class="container text-center" id="interventions">
+    <div class="row">
+        <div class="col pt-30">
+            <h1>New Intervention</h1>
+        </div>
+    </div>
+    <%= render 'form', intervention: @intervention %>
+
+    <div class="row text-center">
+        <div class="col">
+            <%= link_to 'Back to Interventions', interventions_path %>
+        </div>
+    </div>
+</div>
