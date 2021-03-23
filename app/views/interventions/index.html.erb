@@ -9,11 +9,12 @@
         <thead>
           <tr>
             <th scope="col">Author</th>
-            <th scope="col">Employee</th>
+            <th scope="col">Customer</th>
             <th scope="col">Building</th>
             <th scope="col">Battery</th>
             <th scope="col">Column</th>
             <th scope="col">Elevator</th>
+            <th scope="col">Employee</th>
             <th scope="col-2">Intervention start</th>
             <th scope="col-2">Intervention end</th>
             <th scope="col">Result</th>
@@ -27,13 +28,14 @@
           <% @interventions.each do |intervention| %>
             <tr scope="row">  
               <td><%= intervention.author_id %></td>
-              <td><%= intervention.employee_id %></td>
+              <td><%= intervention.customer_id %></td>
               <td><%= intervention.building_id %></td>
               <td><%= intervention.battery_id %></td>
               <td><%= intervention.column_id %></td>
               <td><%= intervention.elevator_id %></td>
-              <td><%= intervention.interv_start %></td>
-              <td><%= intervention.interv_end %></td>
+              <td><%= intervention.employee_id %></td>
+              <td><%= intervention.intervention_start %></td>
+              <td><%= intervention.intervention_end %></td>
               <td><%= intervention.result %></td>
               <td><%= intervention.report %></td>
               <td><%= intervention.status %></td>

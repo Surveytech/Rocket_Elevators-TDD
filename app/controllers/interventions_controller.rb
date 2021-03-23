@@ -1,6 +1,6 @@
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: %i[ show edit update destroy ]
-
+  # before_action :is_employee #check if current user is employee
   # GET /interventions or /interventions.json
   def index
     @interventions = Intervention.all
@@ -64,6 +64,6 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.require(:intervention).permit(:author_id, :employee_id, :building_id, :battery_id, :column_id, :elevator_id, :interv_start, :interv_end, :result, :report, :status)
+      params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :intervention_start, :intervention_end, :result, :report, :status)
     end
 end

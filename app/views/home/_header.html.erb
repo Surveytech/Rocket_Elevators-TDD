@@ -59,9 +59,12 @@
 										
 									</li>
 									<li><!-- INTERVENTIONS -->
-	
-										<%= link_to "INTERVENTIONS" , "/interventions"%>
-										
+
+										<% if current_user %>
+										<a href=<%= "/interventions" %>>INTERVENTIONS</a>
+										<%#= link_to "INTERVENTIONS" , "/interventions" %>
+										<% end %>
+
 									</li>
 									<li>
 									

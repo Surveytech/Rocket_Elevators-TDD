@@ -98,7 +98,9 @@ ActiveRecord::Schema.define(version: 2021_03_22_204906) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "address_id"
+    t.bigint "lead_id"
     t.index ["address_id"], name: "index_customers_on_address_id"
+    t.index ["lead_id"], name: "index_customers_on_lead_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
@@ -132,18 +134,25 @@ ActiveRecord::Schema.define(version: 2021_03_22_204906) do
 
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "author_id"
-    t.integer "employee_id"
-    t.integer "building_id"
-    t.integer "battery_id"
-    t.integer "column_id"
-    t.integer "elevator_id"
-    t.datetime "interv_start"
-    t.datetime "interv_end"
+    t.bigint "customer_id", null: false
+    t.bigint "building_id", null: false
+    t.bigint "battery_id"
+    t.bigint "column_id"
+    t.bigint "elevator_id"
+    t.bigint "employee_id"
+    t.datetime "intervention_start"
+    t.datetime "intervention_end"
     t.string "result"
     t.string "report"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["battery_id"], name: "index_interventions_on_battery_id"
+    t.index ["building_id"], name: "index_interventions_on_building_id"
+    t.index ["column_id"], name: "index_interventions_on_column_id"
+    t.index ["customer_id"], name: "index_interventions_on_customer_id"
+    t.index ["elevator_id"], name: "index_interventions_on_elevator_id"
+    t.index ["employee_id"], name: "index_interventions_on_employee_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -210,8 +219,15 @@ ActiveRecord::Schema.define(version: 2021_03_22_204906) do
   add_foreign_key "buildings", "customers"
   add_foreign_key "columns", "batteries"
   add_foreign_key "customers", "addresses"
+  add_foreign_key "customers", "leads"
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
+  add_foreign_key "interventions", "batteries"
+  add_foreign_key "interventions", "buildings"
+  add_foreign_key "interventions", "columns"
+  add_foreign_key "interventions", "customers"
+  add_foreign_key "interventions", "elevators"
+  add_foreign_key "interventions", "employees"
   add_foreign_key "leads", "customers"
 end

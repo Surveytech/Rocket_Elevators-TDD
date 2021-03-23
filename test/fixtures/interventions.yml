@@ -7,8 +7,8 @@ one:
   battery_id: 1
   column_id: 1
   elevator_id: 1
-  interv_start: 2021-03-22 16:49:06
-  interv_end: 2021-03-22 16:49:06
+  intervention_start: 2021-03-22 16:49:06
+  intervention_end: 2021-03-22 16:49:06
   result: MyString
   report: MyString
   status: MyString
@@ -20,8 +20,8 @@ two:
   battery_id: 1
   column_id: 1
   elevator_id: 1
-  interv_start: 2021-03-22 16:49:06
-  interv_end: 2021-03-22 16:49:06
+  intervention_start: 2021-03-22 16:49:06
+  intervention_end: 2021-03-22 16:49:06
   result: MyString
   report: MyString
   status: MyString

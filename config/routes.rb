@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   #get '/maps'       => 'maps#dashboard'
   post '/leads'       => 'leads#create'
   post '/quotes'      => 'quotes#create'
-  get '/interventions' => 'interventions#new'
+  get '/interventions' => 'interventions#index'
   get 'buildinglocalisation' => 'buildinglocalisation#building'
   get '/speak'       => 'speak#speech'
   # get '/speak', to: 'speak#text_to_speech', as: 'button'

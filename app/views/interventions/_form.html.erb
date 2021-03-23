@@ -16,13 +16,13 @@
       <div class="col-md-4">
         <div class="field">
           <%= form.label :author_id %>
-          <%= form.number_field :author_id %>
+          <%= form.number_field :author_id, value:current_user.id %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="field">
-          <%= form.label :employee_id %>
-          <%= form.number_field :employee_id %>
+          <%= form.label :customer_id %>
+          <%= form.number_field :customer_id %>
         </div>
       </div>
       <div class="col-md-4">
@@ -53,16 +53,24 @@
       </div>
     </div>
     <div class="row pt-20">
+      <div class="col">
+        <div class="field">
+          <%= form.label :employee_id %>
+          <%= form.number_field :employee_id %>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-20">
         <div class="col-md-6">
           <div class="field">
-            <%= form.label :interv_start %>
-            <%= form.datetime_select :interv_start %>
+            <%= form.label :intervention_start %>
+            <%= form.datetime_select :intervention_start %>
           </div>
         </div>
         <div class="col-md-6">
           <div class="field">
-            <%= form.label :interv_end %>
-            <%= form.datetime_select :interv_end %>
+            <%= form.label :intervention_end %>
+            <%= form.datetime_select :intervention_end %>
           </div>
         </div>
     </div>

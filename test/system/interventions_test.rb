@@ -20,8 +20,8 @@ class InterventionsTest < ApplicationSystemTestCase
     fill_in "Column", with: @intervention.column_id
     fill_in "Elevator", with: @intervention.elevator_id
     fill_in "Employee", with: @intervention.employee_id
-    fill_in "Interv end", with: @intervention.interv_end
-    fill_in "Interv start", with: @intervention.interv_start
+    fill_in "Interv end", with: @intervention.intervention_end
+    fill_in "Interv start", with: @intervention.intervention_start
     fill_in "Report", with: @intervention.report
     fill_in "Result", with: @intervention.result
     fill_in "Status", with: @intervention.status
@@ -41,8 +41,8 @@ class InterventionsTest < ApplicationSystemTestCase
     fill_in "Column", with: @intervention.column_id
     fill_in "Elevator", with: @intervention.elevator_id
     fill_in "Employee", with: @intervention.employee_id
-    fill_in "Interv end", with: @intervention.interv_end
-    fill_in "Interv start", with: @intervention.interv_start
+    fill_in "Interv end", with: @intervention.intervention_end
+    fill_in "Interv start", with: @intervention.intervention_start
     fill_in "Report", with: @intervention.report
     fill_in "Result", with: @intervention.result
     fill_in "Status", with: @intervention.status
