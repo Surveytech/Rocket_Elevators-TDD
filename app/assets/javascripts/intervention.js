@@ -31,7 +31,7 @@ $(function() {
         $(row).appendTo("select#Building");
         // Fill Building select
         $.each(data, function(i, j) {
-         row = "<option value=\"" + j.id + "\">" + j.title + "</option>";
+         row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
          $(row).appendTo("select#Building");
         });
        }

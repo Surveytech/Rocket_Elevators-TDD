@@ -12,8 +12,8 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require jquery-3.3.1.js
-//= require jquery-3.3.1.min.js
+//= require jquery-3.3.1
+//= require jquery-3.3.1.min
 //= require activestorage
 //= require Chart.bundle
 //= require chartkick
