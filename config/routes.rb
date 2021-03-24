@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get 'buildinglocalisation' => 'buildinglocalisation#building'
   get '/speak'       => 'speak#speech'
   # get '/speak', to: 'speak#text_to_speech', as: 'button'
+  get 'get_building_by_customer/:customer_id', to: 'interventions#get_building_by_customer'
+  get '/building_search' => 'interventions#building_search'
   
   devise_scope :user do 
     get "/signup"     => "devise/registrations#new" 

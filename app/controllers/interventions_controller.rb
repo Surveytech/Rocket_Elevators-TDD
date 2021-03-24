@@ -19,6 +19,23 @@ class InterventionsController < ApplicationController
   def edit
   end
 
+  def get_building_by_customer
+    puts "get building by customer"
+    puts params[:customer_id]
+    @building = Building.where(customer_id: params[:customer_id])
+        respond_to do |format|
+        format.json { render :json => @building }
+    end
+  end
+  def building_search
+    puts "building search getting called"
+    if params[:customer].present? && params[:customer].strip != ""
+      @building = Building.where("building_id = ?", params[:customer])
+    else
+      @building = Building.all
+    end
+  end
+  
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
