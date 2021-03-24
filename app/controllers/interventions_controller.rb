@@ -19,23 +19,44 @@ class InterventionsController < ApplicationController
   def edit
   end
 
+  #Get the building for the selected customer
   def get_building_by_customer
     puts "get building by customer"
-    puts params[:customer_id]
     @building = Building.where(customer_id: params[:customer_id])
         respond_to do |format|
         format.json { render :json => @building }
     end
   end
-  def building_search
-    puts "building search getting called"
-    if params[:customer].present? && params[:customer].strip != ""
-      @building = Building.where("building_id = ?", params[:customer])
-    else
-      @building = Building.all
+  
+  #Get the battery for the selected building
+  def get_battery_by_building
+    puts "get battery by building"
+    @battery = Battery.where(building_id: params[:building_id])
+        respond_to do |format|
+        format.json { render :json => @battery }
     end
   end
-  
+
+  #Get the column for the selected battery
+  def get_column_by_battery
+    puts "get column by battery"
+    @column = Column.where(battery_id: params[:battery_id])
+    puts @column
+        respond_to do |format|
+        format.json { render :json => @column }
+    end
+  end
+  #Get the elevator for the selected column
+  def get_elevator_by_column
+    puts "get elevator by column"
+    @elevator = Elevator.where(column_id: params[:column_id])
+        respond_to do |format|
+        format.json { render :json => @elevator }
+    end
+  end
+ 
+
+
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)

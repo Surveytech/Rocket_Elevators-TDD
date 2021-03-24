@@ -1,6 +1,5 @@
 
 Rails.application.routes.draw do
-  resources :interventions
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
   get 'pages/residential'
@@ -32,9 +31,17 @@ Rails.application.routes.draw do
   get 'buildinglocalisation' => 'buildinglocalisation#building'
   get '/speak'       => 'speak#speech'
   # get '/speak', to: 'speak#text_to_speech', as: 'button'
+
   get 'get_building_by_customer/:customer_id', to: 'interventions#get_building_by_customer'
-  get '/building_search' => 'interventions#building_search'
+  get '/create_interv' => 'interventions#new'
+
+  get 'get_battery_by_building/:building_id', to: 'interventions#get_battery_by_building'
   
+  get 'get_column_by_battery/:battery_id', to: 'interventions#get_column_by_battery'
+
+  get 'get_elevator_by_column/:column_id', to: 'interventions#get_elevator_by_column'
+
+
   devise_scope :user do 
     get "/signup"     => "devise/registrations#new" 
     get "/signin"     => "devise/sessions#new" 
@@ -46,9 +53,15 @@ Rails.application.routes.draw do
     post "/signout"    => "devise/sessions#destroy"
     post "/changepassword" => "devise/passwords#new"
   end
-
-  Rails.application.routes.draw do
-  resources :interventions
-    resources :quotes, only: [:new, :create]
+  resources :interventions do
+      # collection do
+      get :get_building_by_customer
+      get :building_search
+      get :get_battery_by_building
+      get :battery_search
+      # end
   end
+
+  resources :quotes, only: [:new, :create]
+  
 end

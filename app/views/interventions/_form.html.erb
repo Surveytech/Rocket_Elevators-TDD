@@ -13,106 +13,19 @@
     <% end %>
     <div class="row no-gutters wow slideInUp" data-wow-duration="1s">
       <div class="col-md-4 home-form">
-        <%= form_tag(building_search_path, method: "get", class: "form-inline", remote: true) do %>
+        <%= form_tag(intervention, method: "post", class: "form-inline", remote: true) do %>
         <%= select_tag "Customer", options_from_collection_for_select(Customer.all, "id", "company_name"), prompt: "Customer", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
         <%= select_tag "Building", options_from_collection_for_select(Building.all, "id", "id"), prompt: "Building", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
         <%= select_tag "Battery", options_from_collection_for_select(Battery.all, "id", "id"), prompt: "Battery", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
-        <%# <%= submit_tag("Search", class: "btn btn-primary") %>
+        <%= select_tag "Column", options_from_collection_for_select(Column.all, "id", "id"), prompt: "Column", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag "Elevator", options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "Elevator", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= select_tag "Employee", options_from_collection_for_select(Employee.all, "id", "id"), prompt: "Employee", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+        <%= submit_tag("Create Intervention", class: "btn btn-primary") %>
     <% end %>
       </div>
     </div>
 
-
-
-    <div class="row pt-20">
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :author_id %>
-          <%= form.number_field :author_id, value:current_user.id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :customer_id %>
-          <%= form.number_field :customer_id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :building_id %>
-          <%= form.number_field :building_id %>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-20">
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :battery_id %>
-          <%= form.number_field :battery_id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :column_id %>
-          <%= form.number_field :column_id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :elevator_id %>
-          <%= form.number_field :elevator_id %>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-20">
-      <div class="col">
-        <div class="field">
-          <%= form.label :employee_id %>
-          <%= form.number_field :employee_id %>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-20">
-        <div class="col-md-6">
-          <div class="field">
-            <%= form.label :intervention_start %>
-            <%= form.datetime_select :intervention_start %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="field">
-            <%= form.label :intervention_end %>
-            <%= form.datetime_select :intervention_end %>
-          </div>
-        </div>
-    </div>
-    <div class="row pt-20">
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :result %>
-          <%= form.text_field :result %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :report %>
-          <%= form.text_field :report %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :status %>
-          <%= form.text_field :status %>
-        </div>
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col pt-30">
-        <div class="actions">
-          <%= form.submit %>
-        </div>
-      </div>
-    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 <% end %>
 
