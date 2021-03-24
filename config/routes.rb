@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+  resources :interventions
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
   get 'pages/residential'
@@ -27,10 +28,12 @@ Rails.application.routes.draw do
   #get '/maps'       => 'maps#dashboard'
   post '/leads'       => 'leads#create'
   post '/quotes'      => 'quotes#create'
-
+  get '/interventions' => 'interventions#index'
   get 'buildinglocalisation' => 'buildinglocalisation#building'
   get '/speak'       => 'speak#speech'
   # get '/speak', to: 'speak#text_to_speech', as: 'button'
+  get 'get_building_by_customer/:customer_id', to: 'interventions#get_building_by_customer'
+  get '/building_search' => 'interventions#building_search'
   
   devise_scope :user do 
     get "/signup"     => "devise/registrations#new" 
@@ -45,6 +48,7 @@ Rails.application.routes.draw do
   end
 
   Rails.application.routes.draw do
+  resources :interventions
     resources :quotes, only: [:new, :create]
   end
 end

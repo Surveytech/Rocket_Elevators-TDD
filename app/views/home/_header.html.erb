@@ -58,6 +58,14 @@
 										<%= link_to "CONTACT" , "#{root_path}home#contact"%>
 										
 									</li>
+									<li><!-- INTERVENTIONS -->
+
+										<% if current_user %>
+										<a href=<%= "/interventions" %>>INTERVENTIONS</a>
+										<%#= link_to "INTERVENTIONS" , "/interventions" %>
+										<% end %>
+
+									</li>
 									<li>
 									
 										<% if !current_user %>

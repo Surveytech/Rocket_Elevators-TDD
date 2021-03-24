@@ -10,9 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require rails-ujs
+//= require jquery
+//= require jquery-3.3.1.js
+//= require jquery-3.3.1.min.js
 //= require activestorage
 //= require Chart.bundle
 //= require chartkick
 //= require_tree .
 //= require underscore
 //= require gmaps/google
+//= require intervention

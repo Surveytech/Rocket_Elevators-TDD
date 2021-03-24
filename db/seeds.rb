@@ -8,7 +8,6 @@ require 'csv'
 # id,address_type,status,entity,adress,appartment,city,postal_code,country,notes,created_at,updated_at
 #Initialization
 def init() 
-  puts "init 2"
   address_create()
   employee_create("Nicolas", "Genest", "CEO", 'roc-kets', "nicolas.genest@codeboxx.biz")
   employee_create("Nadya", "Fortier", "Director", "roc-kets", "nadya.fortier@codeboxx.biz")

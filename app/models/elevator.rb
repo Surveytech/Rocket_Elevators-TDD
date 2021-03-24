@@ -1,7 +1,8 @@
 require 'date'  #gem use to format timestamp at the end of the message
 
 class Elevator < ApplicationRecord
-    # belongs_to :column ,optional: true
+    belongs_to :column ,optional: true
+
     # before_save :twilio_sms
 
     # def twilio_sms
