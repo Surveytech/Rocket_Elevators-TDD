@@ -1,7 +1,10 @@
+require 'zendesk_api'
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: %i[ show edit update destroy ]
   # before_action :is_employee #check if current user is employee
+
   # GET /interventions or /interventions.json
+  
   def index
     @interventions = Intervention.all
   end
@@ -19,37 +22,97 @@ class InterventionsController < ApplicationController
   def edit
   end
 
+  #Get the building for the selected customer
   def get_building_by_customer
     puts "get building by customer"
-    puts params[:customer_id]
     @building = Building.where(customer_id: params[:customer_id])
         respond_to do |format|
         format.json { render :json => @building }
     end
   end
-  def building_search
-    puts "building search getting called"
-    if params[:customer].present? && params[:customer].strip != ""
-      @building = Building.where("building_id = ?", params[:customer])
-    else
-      @building = Building.all
+  
+  #Get the battery for the selected building
+  def get_battery_by_building
+    puts "get battery by building"
+    @battery = Battery.where(building_id: params[:building_id])
+        respond_to do |format|
+        format.json { render :json => @battery }
     end
   end
-  
+
+  #Get the column for the selected battery
+  def get_column_by_battery
+    puts "get column by battery"
+    @column = Column.where(battery_id: params[:battery_id])
+    puts @column
+        respond_to do |format|
+        format.json { render :json => @column }
+    end
+  end
+  #Get the elevator for the selected column
+  def get_elevator_by_column
+    puts "get elevator by column"
+    @elevator = Elevator.where(column_id: params[:column_id])
+        respond_to do |format|
+        format.json { render :json => @elevator }
+    end
+  end
+
+  def create_zendesk
+ 
+    # @employee_name = Employee.find_by(current_user.id)
+    # @customer_name = Customer.find_by(customer_id)
+    # @field_employee = Employee.find_by(employee_id)
+
+    client = ZendeskAPI::Client.new do |config|
+        config.url = ENV['ZENDESK_URL']
+        config.username = ENV["ZENDESK_EMAIL"]
+        config.token = ENV["ZENDESK_TOKEN"]
+    end
+    ZendeskAPI::Ticket.create!(client,
+    :subject => "Intervention from Employee ##{@intervention.author_id}",
+    :comment => {
+        :value => "Needs Intervention in the building ##{@intervention.building_id} for the customer: #{@intervention.customer_id}.
+        
+        Battery ID : #{@intervention.battery_id}
+        Column ID : #{@intervention.column_id} 
+        Elevator ID : #{@intervention.elevator_id}
+
+        The employee assign is : #{@intervention.employee_id}.
+        
+        Brief description of the intervention: #{@intervention.report}."
+    },
+
+    :priority => "urgent",
+    :type => "problem"
+    )
+  end
+
   # POST /interventions or /interventions.json
   def create
-    @intervention = Intervention.new(intervention_params)
+    @intervention = Intervention.new
+   
+    @intervention.author_id = current_user.id
+    @intervention.customer_id = params[:Customer]
+    @intervention.building_id = params[:Building]
+    @intervention.battery_id = params[:Battery]
+    @intervention.column_id = params[:Column]
+    @intervention.elevator_id = params[:Elevator]
+    @intervention.employee_id = params[:Employee]
+    @intervention.report = params[:report]
 
-    respond_to do |format|
-      if @intervention.save
-        format.html { redirect_to @intervention, notice: "Intervention was successfully created." }
-        format.json { render :show, status: :created, location: @intervention }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @intervention.errors, status: :unprocessable_entity }
-      end
+    @intervention.save!
+ 
+
+    if @intervention.save
+      create_zendesk()
+
+      redirect_to interventions_path, notice: "Message sent!"
+    # else    
+    #   redirect_to "/leads", notice: "Invalid fields!"
     end
   end
+
 
   # PATCH/PUT /interventions/1 or /interventions/1.json
   def update
@@ -81,6 +144,6 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :intervention_start, :intervention_end, :result, :report, :status)
+        params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :intervention_start, :intervention_end, :result, :report, :status)
     end
 end

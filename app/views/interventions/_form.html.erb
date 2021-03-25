@@ -1,106 +1,70 @@
+<div class="row no-gutters wow slideInUp" data-wow-duration="1s">
+  <div class="container home-form col-md-4">
 
-<%= form_with(model: intervention, local: true) do |form| %>
-    <% if intervention.errors.any? %>
+    <%= form_with(model: intervention, local: true) do |form| %>
+
+      <% if intervention.errors.any? %>
         <div id="error_explanation">
-            <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
-
-            <ul>
+          <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+          <ul>
             <% intervention.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
-            </ul>
+          </ul>
         </div>
+      <% end %>
+      
+      <div class="field">
+        <%= form.label :customer_id %>
+          <%= select_tag "Customer", options_from_collection_for_select(Customer.all, "id", "company_name"), prompt: "Customer Company Name", class: "custom-select", required: true %>
+      </div>
+
+      <br/>
+
+      <div class="field building">
+        <%= form.label :building_id %>
+          <%= select_tag "Building", options_from_collection_for_select(Building.all, "id", "id"), prompt: "Building ID", class: "custom-select", required: true %>
+      </div>
+
+      <br/>
+
+      <div class="field battery">
+        <%= form.label :battery_id %>
+          <%= select_tag "Battery", options_from_collection_for_select(Battery.all, "id", "id"), prompt: "Battery ID", class: "custom-select" %>
+      </div>
+
+      <br/>
+      <div class="field column">
+        <%= form.label :column_id %>
+          <%= select_tag "Column", options_from_collection_for_select(Column.all, "id", "id"), prompt: "Column ID", class: "custom-select" %>
+      </div>
+
+      <br/>
+
+      <div class="field elevator">
+        <%= form.label :elevator_id %>
+          <%= select_tag "Elevator", options_from_collection_for_select(Elevator.all, "id", "id"), prompt: "Elevator ID", class: "custom-select" %>
+      </div>
+
+      <br/>
+
+      <div class="field">
+        <%= form.label :employee_id %>
+          <%= select_tag "Employee", options_from_collection_for_select(Employee.all, "id", "fullname"), prompt: "Employee Name", class: "custom-select" %>
+      </div>
+
+      <br/>
+
+      <div class="field">
+        <%= form.label :report %>
+          <%= text_area :report, "Description", size: "50x3" %>
+      </div>
+
+      <br/>
+
+      <div class="actions">
+        <%= form.submit "Send Intervention" , class: 'btn btn-primary'  %>
+      </div>
     <% end %>
-
-    <div class="row pt-20">
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :author_id %>
-          <%= form.number_field :author_id, value:current_user.id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :customer_id %>
-          <%= form.number_field :customer_id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :building_id %>
-          <%= form.number_field :building_id %>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-20">
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :battery_id %>
-          <%= form.number_field :battery_id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :column_id %>
-          <%= form.number_field :column_id %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :elevator_id %>
-          <%= form.number_field :elevator_id %>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-20">
-      <div class="col">
-        <div class="field">
-          <%= form.label :employee_id %>
-          <%= form.number_field :employee_id %>
-        </div>
-      </div>
-    </div>
-    <div class="row pt-20">
-        <div class="col-md-6">
-          <div class="field">
-            <%= form.label :intervention_start %>
-            <%= form.datetime_select :intervention_start %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="field">
-            <%= form.label :intervention_end %>
-            <%= form.datetime_select :intervention_end %>
-          </div>
-        </div>
-    </div>
-    <div class="row pt-20">
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :result %>
-          <%= form.text_field :result %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :report %>
-          <%= form.text_field :report %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="field">
-          <%= form.label :status %>
-          <%= form.text_field :status %>
-        </div>
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col pt-30">
-        <div class="actions">
-          <%= form.submit %>
-        </div>
-      </div>
-    </div>
-
-<% end %>
-
+  </div>
+</div>
