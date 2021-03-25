@@ -61,16 +61,19 @@ class InterventionsController < ApplicationController
   def create
     @intervention = Intervention.new(intervention_params)
 
-    respond_to do |format|
-      if @intervention.save
-        format.html { redirect_to @intervention, notice: "Intervention was successfully created." }
-        format.json { render :show, status: :created, location: @intervention }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @intervention.errors, status: :unprocessable_entity }
-      end
-    end
+    @intervention.author_id = Employee.find_by(user_id: current_user.id).id
+    @intervention.customer_id = params[:customer]
+    @intervention.building_id = params[:building]
+    @intervention.battery_id = params[:battery]
+    @intervention.column_id = params[:column]
+    @intervention.elevator_id = params[:elevator]
+    @intervention.employee_id = params[:employee]
+    @intervention.report = params[:report]
+
+    @intervention.save!
+
   end
+
 
   # PATCH/PUT /interventions/1 or /interventions/1.json
   def update
@@ -102,6 +105,6 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :intervention_start, :intervention_end, :result, :report, :status)
+        params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :intervention_start, :intervention_end, :result, :report, :status)
     end
 end

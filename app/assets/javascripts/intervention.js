@@ -1,10 +1,14 @@
 $(function() {
 
-    $("select#Building").hide()
-    $("select#Battery").hide()
-    $("select#Column").hide()
-    $("select#Elevator").hide()
-    console.log("building from customer")
+    // $("select#Building").hide()
+    $(".building").hide()
+    // $("select#Battery").hide()
+    $(".battery").hide()
+    // $("select#Column").hide()
+    $(".column").hide()
+    // $("select#Elevator").hide()
+    $(".elevator").hide()
+
     if ($("select#Customer").val() == "") {
      $("select#Building option").remove();
      var row = "<option value=\"" + "" + "\">" + "Building" + "</option>";
@@ -37,7 +41,7 @@ $(function() {
         $.each(data, function(i, j) {
          row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
          $(row).appendTo("select#Building");
-         $("select#Building").show()
+         $(".building").show()
         });
        }
       });
@@ -75,7 +79,7 @@ $(function() {
         $.each(data, function(i, j) {
          row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
          $(row).appendTo("select#Battery");
-         $("select#Battery").show()
+         $(".battery").show()
         });
        }
       });
@@ -114,7 +118,7 @@ $(function() {
            $.each(data, function(i, j) {
             row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
             $(row).appendTo("select#Column");
-            $("select#Column").show()
+            $(".column").show()
            });
           }
          });
@@ -153,7 +157,7 @@ $(function() {
               $.each(data, function(i, j) {
                row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
                $(row).appendTo("select#Elevator");
-               $("select#Elevator").show()
+               $(".elevator").show()
               });
              }
             });
