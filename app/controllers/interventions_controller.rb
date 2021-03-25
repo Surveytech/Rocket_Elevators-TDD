@@ -1,7 +1,10 @@
+require 'zendesk_api'
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: %i[ show edit update destroy ]
   # before_action :is_employee #check if current user is employee
+
   # GET /interventions or /interventions.json
+  
   def index
     @interventions = Intervention.all
   end
@@ -54,24 +57,60 @@ class InterventionsController < ApplicationController
         format.json { render :json => @elevator }
     end
   end
- 
 
+  def create_zendesk
+ 
+    # @employee_name = Employee.find_by(current_user.id)
+    # @customer_name = Customer.find_by(customer_id)
+    # @field_employee = Employee.find_by(employee_id)
+
+    client = ZendeskAPI::Client.new do |config|
+        config.url = ENV['ZENDESK_URL']
+        config.username = ENV["ZENDESK_EMAIL"]
+        config.token = ENV["ZENDESK_TOKEN"]
+    end
+    ZendeskAPI::Ticket.create!(client,
+    :subject => "Intervention from Employee ##{@intervention.author_id}",
+    :comment => {
+        :value => "Needs Intervention in the building ##{@intervention.building_id} for the customer: #{@intervention.customer_id}.
+        
+        Battery ID : #{@intervention.battery_id}
+        Column ID : #{@intervention.column_id} 
+        Elevator ID : #{@intervention.elevator_id}
+
+        The employee assign is : #{@intervention.employee_id}.
+        
+        Brief description of the intervention: #{@intervention.report}."
+    },
+
+    :priority => "urgent",
+    :type => "problem"
+    )
+  end
 
   # POST /interventions or /interventions.json
   def create
-    @intervention = Intervention.new(intervention_params)
-
-    @intervention.author_id = Employee.find_by(user_id: current_user.id).id
-    @intervention.customer_id = params[:customer]
-    @intervention.building_id = params[:building]
-    @intervention.battery_id = params[:battery]
-    @intervention.column_id = params[:column]
-    @intervention.elevator_id = params[:elevator]
-    @intervention.employee_id = params[:employee]
+    @intervention = Intervention.new
+   
+    @intervention.author_id = current_user.id
+    @intervention.customer_id = params[:Customer]
+    @intervention.building_id = params[:Building]
+    @intervention.battery_id = params[:Battery]
+    @intervention.column_id = params[:Column]
+    @intervention.elevator_id = params[:Elevator]
+    @intervention.employee_id = params[:Employee]
     @intervention.report = params[:report]
 
     @intervention.save!
+ 
 
+    if @intervention.save
+      create_zendesk()
+
+      redirect_to interventions_path, notice: "Message sent!"
+    # else    
+    #   redirect_to "/leads", notice: "Invalid fields!"
+    end
   end
 
 
@@ -105,6 +144,6 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-        params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :intervention_start, :intervention_end, :result, :report, :status)
+        params.permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :intervention_start, :intervention_end, :result, :report, :status)
     end
 end
