@@ -27,8 +27,8 @@ class LeadsController < ApplicationController
         @lead.save!
         if @lead.save
             # fact_contacts()
-            sendMail()
-            dropbox()
+            # sendMail()
+            # dropbox()
             redirect_to main_app.root_path, notice: "Message sent!"
         else    
             redirect_to "/leads", notice: "Invalid fields!"

@@ -142,9 +142,9 @@ ActiveRecord::Schema.define(version: 2021_03_22_204906) do
     t.bigint "employee_id"
     t.datetime "intervention_start"
     t.datetime "intervention_end"
-    t.string "result"
+    t.string "result", default: "Incomplete"
     t.string "report"
-    t.string "status"
+    t.string "status", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["battery_id"], name: "index_interventions_on_battery_id"
