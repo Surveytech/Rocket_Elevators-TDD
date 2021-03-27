@@ -137,34 +137,15 @@ read me created by jean-francois taillefer
 # Week 9
 # Consolidation
 
-## Information System
-* [Link for the Information System Rails app website](claudestlaurent.xyz)
+
+* [Link for the Information System](claudestlaurent.xyz)
 * [Link for the Information System Repo](https://github.com/Surveytech/Rocket-Elevator-Foundation.git)
-
-For the Rest APi, the ReadMe file with the explanations are in this repo:
-
-* [Link for the Information System Repo](https://github.com/Surveytech/Rocket-Elevator-Foundation_RestAPI.git)
-* [Site for the Rest API URL](https://csl-restapiweek-9.azurewebsites.net)
-
-For the rails app, I had to do a migration to create an Interventions table, who is in the ***csl*** mysql database in the Codeboxx server.
-The Interventions section is accessible only in the website backend when an employee login.
-
-To login, you can use those emails, with **123456** as password :
-
-* nicolas.genest@codeboxx.biz
-* nadya.fortier@codeboxx.biz
-* martin.chantal@codeboxx.biz
-* mathieu.houde@codeboxx.biz
-* david.boutin@codeboxx.biz
-* mathieu.lortiet@codeboxx.biz
-* thomas.carriert@codeboxx.biz
-* admin1@admin1.com
-* admin@admin.com
+* [Link for the Rest API URL](https://csl-restapiweek-9.azurewebsites.net)
+* [Link for the Information System](claudestlaurent.xyz)
 
 
-The views for the Interventions section are in the views->interventions folder, and those who are used are new.html.erb (with _form.html.erb render in) and index.html.erb.
 
-In the intervention controller, I added the Zendesk function to create a ticket each time a Intervention request is made. The ticket is send to my email and in the Zendesk dashboard.
+
 
 
 
