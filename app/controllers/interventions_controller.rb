@@ -100,6 +100,14 @@ class InterventionsController < ApplicationController
     @intervention.elevator_id = params[:Elevator]
     @intervention.employee_id = params[:Employee]
     @intervention.report = params[:report]
+    
+    if @intervention.elevator_id 
+        @intervention.battery_id = nil
+        @intervention.column_id = nil
+    elsif @intervention.column_id
+        @intervention.battery_id = nil
+    end    
+
 
     @intervention.save!
  
