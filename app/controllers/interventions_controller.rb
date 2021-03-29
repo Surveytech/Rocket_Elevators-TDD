@@ -74,9 +74,9 @@ class InterventionsController < ApplicationController
     :comment => {
         :value => "Needs Intervention in the building ##{@intervention.building_id} for the customer: #{@intervention.customer_id}.
         
-        Battery ID : #{@intervention.battery_id}
-        Column ID : #{@intervention.column_id} 
-        Elevator ID : #{@intervention.elevator_id}
+        Battery ID : #{@batt}
+        Column ID : #{@col} 
+        Elevator ID : #{@elev}
 
         The employee assign is : #{@intervention.employee_id}.
         
@@ -91,7 +91,10 @@ class InterventionsController < ApplicationController
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new
-   
+    
+    @batt = params[:Battery]
+    @col = params[:Column]
+    @elev = params[:Elevator]
     @intervention.author_id = current_user.id
     @intervention.customer_id = params[:Customer]
     @intervention.building_id = params[:Building]
