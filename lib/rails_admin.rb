@@ -60,11 +60,8 @@ module RailsAdmin
                 register_instance_option :statistics? do
                     true
                 end
-
             end
-
         end
-      end
     end
 end
 # is this going to create a pull request
