@@ -42,7 +42,7 @@ module ElevatorMedia
             
             response = http.request(request)
             puts response.read_body
-            # return response
+            return response
         end
     end
 end

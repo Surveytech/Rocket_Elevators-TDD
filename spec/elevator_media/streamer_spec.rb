@@ -74,7 +74,7 @@ describe ElevatorMedia::Streamer do
 
         it 'return AAPL infos' do                           #1 didn't pass
             expect(streamer.stockquote(@stock)).not_to be_nil     #2 didn't pass no argument
-        end                                                        #3 didin't pass, puts quote but no return 
-    end
+        end                                                       #3 didin't pass, puts quote but no return 
+    end                                                           #4 pass, added return response to the method  
 
 end
