@@ -72,8 +72,8 @@ describe ElevatorMedia::Streamer do
             expect(streamer).to respond_to(:stockquote)
         end
 
-        it 'return AAPL infos' do
-            expect(streamer).stockquote()
+        it 'return AAPL infos' do                           #1 didn't pass
+            expect(streamer.stockquote()).not_to be_nil     #2 didn't pass no argument
         end
     end
 
