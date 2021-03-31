@@ -1,5 +1,5 @@
 require 'elevator_media/streamer.rb'
-# require 'rails_helper'
+require 'rails_helper'
 
 describe ElevatorMedia::Streamer do
 
@@ -18,17 +18,17 @@ describe ElevatorMedia::Streamer do
     context 'getcontent fonctionnality' do
 
         it "should call weather service by default" do
-                expect(OpenWeather::Current).to receive(:city)
+                expect(streamer.getcontent).to receive(:city)
                 streamer.getcontent
         end
 
         it "should not call weather service if another parameters is used" do
-            expect(OpenWeather::Current).to_not receive(:city)
+            expect(streamer.getcontent).to_not receive(:city)
             streamer.getcontent('jokes')
         end
 
         it "should call weather service with weather param" do
-            expect(OpenWeather::Current).to receive(:city)
+            expect(streamer.getcontent).to receive(:city)
             streamer.getcontent('weather')
             # p "----#{weathers}-----"
         end
@@ -45,11 +45,11 @@ describe ElevatorMedia::Streamer do
     context 'getweather' do
 
         it "Should create action # for weather service" do
-            expect(OpenWeather::Current).to receive(:city).with("Berlin,DE",{:APPID=>"2fe833a897f6adda8d2270af6545a6ed", :units=>"metric"})
+            expect(OpenWeather::Current).to receive(:city).with("Berlin,DE",{:APPID=> ENV["OPEN_WEATHER_APPID"], :units=>"metric"})
             streamer.getweather(@city)
         end    
         it "should return a human readable phrase" do
-            expect(OpenWeather::Current).to_not receive(:city).with("Berlin,DE",{:APPID=>"2fe833a897f6adda8d2270af6545a6ed", :units=>"metric"})
+            expect(OpenWeather::Current).to_not receive(:city).with("Berlin,DE",{:APPID=> ENV["OPEN_WEATHER_APPID"], :units=>"metric"})
             streamer.getweather(@city)
         end 
         it "should write testing 1-2" do
@@ -74,7 +74,10 @@ describe ElevatorMedia::Streamer do
 
         it 'return AAPL infos' do                           #1 didn't pass
             expect(streamer.stockquote(@stock)).not_to be_nil     #2 didn't pass no argument
-        end                                                       #3 didin't pass, puts quote but no return 
+        end     
+        it 'is it in a div' do
+            expect(streamer.stockquote(@stock)).to include("div")
+        end                                                  #3 didin't pass, puts quote but no return 
     end                                                           #4 pass, added return response to the method  
 
 end

@@ -1,4 +1,4 @@
-require Rails.root.join('lib', 'rails_admin', 'gmap.rb')
+require Rails.root.join('lib','rails_admin', 'gmap.rb')
 
 RailsAdmin.config do |config|
   ### Popular gems integration

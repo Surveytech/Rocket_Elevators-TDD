@@ -53,7 +53,7 @@ gem "twilio-ruby"
 # twilio
 gem 'dropbox_api'
 gem 'open-weather'
-
+gem 'unirest'
 
 
 # ===============================================================
