@@ -4,66 +4,22 @@ require 'rails_helper'
 describe ElevatorMedia::Streamer do
 
     let!(:streamer){ElevatorMedia::Streamer.new}
-    # let!(:@options){ENV["OPEN_WEATHER_APPID"]}
-    # let!(apikey = ENV["OPEN_WEATHER_APPID"])
 
-    context 'Does getcontent method work' do
+    context 'Does weatherapp work' do
 
-        it 'yes it works' do
-            expect(streamer).to respond_to(:getcontent)
-        end
-
-    end
-
-    context 'getcontent fonctionnality' do
-
-        it "should call weather service by default" do
-                expect(streamer.getcontent).to receive(:city)
-                streamer.getcontent
-        end
-
-        it "should not call weather service if another parameters is used" do
-            expect(streamer.getcontent).to_not receive(:city)
-            streamer.getcontent('jokes')
-        end
-
-        it "should call weather service with weather param" do
-            expect(streamer.getcontent).to receive(:city)
-            streamer.getcontent('weather')
-            # p "----#{weathers}-----"
-        end
-
-    end
-
-    context 'Does getweather work' do
-
-        it 'yes getweather works great' do
-            expect(streamer).to respond_to(:getweather)
+        it 'yes weatherapp works great' do
+            expect(streamer).to respond_to(:weatherapp)
         end
     end
 
-    context 'getweather' do
+    context 'weatherapp' do
 
-        it "Should create action # for weather service" do
-            expect(OpenWeather::Current).to receive(:city).with("Berlin,DE",{:APPID=> ENV["OPEN_WEATHER_APPID"], :units=>"metric"})
-            streamer.getweather(@city)
-        end    
-        it "should return a human readable phrase" do
-            expect(OpenWeather::Current).to_not receive(:city).with("Berlin,DE",{:APPID=> ENV["OPEN_WEATHER_APPID"], :units=>"metric"})
-            streamer.getweather(@city)
-        end 
         it "should write testing 1-2" do
             expect(streamer.getcontent('weather')).not_to be_nil
+        end 
+        it 'return Berlin infos if @city = Berlin' do                           #1 didn't pass
+            expect(streamer.weatherapp(@city)).to include("Berlin")     #2 didn't pass no argument
         end  
-    end
-
-    context 'Does getweather by city work' do
-
-        it 'return city weather' do
-            p "_________________WEATHER______________________"
-            expect(streamer.getweather(@city)).not_to be_nil
-            p "_________________WEATHER______________________"
-        end
     end
 
     context 'Does stockquote work' do
