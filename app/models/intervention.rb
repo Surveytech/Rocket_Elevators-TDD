@@ -6,5 +6,5 @@ class Intervention < ApplicationRecord
     belongs_to :column, optional: true
     belongs_to :elevator, optional: true
 
-
+    validates :author_id, presence:true
 end

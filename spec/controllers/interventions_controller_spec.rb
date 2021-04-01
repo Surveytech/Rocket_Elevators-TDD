@@ -14,9 +14,11 @@ describe "Testing interventions creation", type: :controller do
     intervention.employee_id = 1
     intervention.report = "Job is done"
 
+
     context "test the interventions form" do
         it "check to see if it's in the interventions form" do
-            expect(intervention).to be_a(Intervention)
+            intervention.author_id = nil
+            expect(intervention).not_to be_valid
         end
     end
 
