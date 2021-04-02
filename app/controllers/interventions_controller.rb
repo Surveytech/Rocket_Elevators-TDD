@@ -1,7 +1,8 @@
 require 'zendesk_api'
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: %i[ show edit update destroy ]
-  # before_action :is_employee #check if current user is employee
+  # before_action :require_user, :only => 'show'
+  before_action :is_employee #check if current user is employee
 
   # GET /interventions or /interventions.json
   
