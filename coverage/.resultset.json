@@ -269,6 +269,7 @@
           1,
           1,
           null,
+          1,
           null,
           null,
           null,
@@ -437,6 +438,9 @@
           1,
           null,
           1,
+          0,
+          0,
+          null,
           0,
           null,
           null,
@@ -668,6 +672,38 @@
           null
         ]
       },
+      "/home/surveytech/week10/Rocket_Elevators-TDD/app/models/elevator.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
       "/home/surveytech/week10/Rocket_Elevators-TDD/app/controllers/home_controller.rb": {
         "lines": [
           1,
@@ -699,34 +735,6 @@
       "/home/surveytech/week10/Rocket_Elevators-TDD/app/jobs/application_job.rb": {
         "lines": [
           0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/surveytech/week10/Rocket_Elevators-TDD/app/controllers/yahoo_finance_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
           0
         ],
         "branches": {
@@ -915,40 +923,6 @@
           0,
           0,
           null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/surveytech/week10/Rocket_Elevators-TDD/app/models/elevator.rb": {
-        "lines": [
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -1183,6 +1157,6 @@
         }
       }
     },
-    "timestamp": 1617390293
+    "timestamp": 1617395399
   }
 }

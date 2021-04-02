@@ -17,7 +17,7 @@ describe "Testing leads creation", type: :controller do
 
     # to test if the lead form is created
     context "test the leads form" do                    
-        it "check to see if it's in the leads form" do
+        it "check to see if it's in the leads form" do      
             expect(lead).to be_a(Lead)
         end
     end

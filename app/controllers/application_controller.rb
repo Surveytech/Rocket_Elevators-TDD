@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in?, :is_employee
 
     def is_employee
-        redirect_to root_path unless logged_in?
+        if current_user
+            redirect_to main_app.root_path unless current_user.admin == true
+        else 
+            redirect_to main_app.root_path
+        end
     end
-
 end 
