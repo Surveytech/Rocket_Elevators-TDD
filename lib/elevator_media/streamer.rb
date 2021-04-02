@@ -35,9 +35,11 @@ module ElevatorMedia
             request["x-rapidapi-host"] = 'community-open-weather-map.p.rapidapi.com'
             
             response = http.request(request)
-            # puts JSON.parse(response.read_body)['shortName']
-            # shortName = JSON.parse(response.read_body)['shortName']
-            puts response.read_body
+            temp = (response.read_body)['test']
+            # puts JSON.parse(response.read_body)['tempmin']
+            # puts JSON.parse(response.read_body)['temp_max']
+
+            puts response.read_body['coord']
             return response.read_body
         end
             # Yahoo Finance API with RapidApi

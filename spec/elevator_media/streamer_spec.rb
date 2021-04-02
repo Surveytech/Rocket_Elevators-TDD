@@ -11,9 +11,6 @@ describe ElevatorMedia::Streamer do
             expect(streamer).to respond_to(:weatherapp)
         end
 
-        it "should write testing 1-2" do
-            expect(streamer.getcontent('city')).not_to be_nil
-        end 
         it 'return Berlin infos if @city = Berlin' do                   #1 didn't pass because the city wasn't Berlin
             expect(streamer.getcontent('city')).to include("Berlin")     #2 pass beacause de city was changed to Berlin,DE
         end                                                             
