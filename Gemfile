@@ -54,6 +54,7 @@ gem "twilio-ruby"
 gem 'dropbox_api'
 gem 'open-weather'
 gem 'unirest'
+gem 'simplecov', require: false, group: :test
 
 # ===============================================================
 # ===============================================================
@@ -82,7 +83,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
-
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

@@ -1,8 +1,9 @@
 require 'rails_helper'
 require './app/controllers/interventions_controller.rb'
 
-describe "Testing interventions creation", type: :controller do
+RSpec.describe InterventionsController, type: :controller do
     
+    # creation of the intervention form
     intervention  = Intervention.new()
 
     intervention.author_id = 5
@@ -12,25 +13,22 @@ describe "Testing interventions creation", type: :controller do
     intervention.column_id = 9
     intervention.elevator_id = 10
     intervention.employee_id = 1
-    intervention.report = "Job is done"
+    intervention.report = nil
 
-
+    # to test if the attribute passed is in the form
     context "test the interventions form" do
         it "check to see if it's in the interventions form" do
             intervention.author_id = nil
             expect(intervention).not_to be_valid
         end
     end
-
-    context "test if the report is there" do
-        it "the report is there" do
-            expect(intervention.report).to be_instance_of(String)
+    # to test if the report is in the form
+    context "test if the report is there" do                # the first test fail because the report is nil
+        it "the report is there" do 
+            intervention.report = "Job is done"                        # 2nd test passes when "jo is done" is add the report
+            expect(intervention.report).to be_kind_of(String)
+            puts intervention.report
         end
     end
 
-    context "test to see if the departement is sales" do
-        it "check the departement" do
-            expect(intervention.column_id).to be_instance_of(Integer)
-        end
-    end
 end

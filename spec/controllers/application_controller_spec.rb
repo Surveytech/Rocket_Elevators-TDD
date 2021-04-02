@@ -11,8 +11,13 @@ describe ApplicationController, :type => :request do
             fill_in 'Email', with: 'nicolas.genest@codeboxx.biz'
             fill_in 'Password', with: '123456'
             click_button 'Log in'
-            expect(page).to_not have_text('INTERVENTIONS')
+            expect(page).to have_text('INTERVENTIONS')
         end
+
+        # it "Test try out with url" do
+        #     visit 'http://claudestlaurent.xyz/admin'
+        #     expect(page).to eq('http://claudestlaurent.xyz')
+        # end
     end
 end
 
