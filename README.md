@@ -5,7 +5,6 @@
  <img src="app/assets/images/favicon.png" align="right" alt="Rocket Elevators logo" width="80" height="">
 
 * [Link for the TDD Repo](https://github.com/Surveytech/Rocket_Elevators-TDD.git)
-* [URL for my site](https://claudestlaurent.xyz)
 * [Video link](https://youtu.be/)
 
 ## Works done this week
