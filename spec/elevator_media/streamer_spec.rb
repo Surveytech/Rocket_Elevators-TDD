@@ -18,10 +18,6 @@ describe ElevatorMedia::Streamer do
 
     context 'stockquote tests' do
 
-        it 'Does stockquote exist' do                               # check if there's a method called stockquote
-            expect(streamer).to respond_to(:stockquote)
-        end
-
         it 'return stock symbol' do                                 #1 didn't pass
             expect(streamer.getcontent('stock')).not_to be_nil       #2 didn't pass no argument
         end     
